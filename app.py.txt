@@ -1,0 +1,22 @@
+import streamlit as st
+from googletrans import Translator
+
+st.set_page_config(page_title="TransLingua")
+
+st.title("🌍 TransLingua")
+st.subheader("AI-Powered Multi-Language Translator")
+
+translator = Translator()
+
+text = st.text_area("Text enter cheyyi")
+
+source_lang = st.text_input("Source Language (ex: en)")
+target_lang = st.text_input("Target Language (ex: te)")
+
+if st.button("Translate"):
+    if text and source_lang and target_lang:
+        translated = translator.translate(text, src=source_lang, dest=target_lang)
+        st.success("Translated Text:")
+        st.write(translated.text)
+    else:
+        st.warning("Anni fields fill cheyyi")
